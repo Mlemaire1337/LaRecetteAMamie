@@ -5,7 +5,16 @@
     </button>
     <div>
       <p>{{ msg }}</p>
-      <p id="#sorry" v-if="seen"> Mamie est très triste. Elle n'a pas une très bonne....Vue...</p>
+      <div id="#sorry" v-if="seen">
+        <h3>Mamie est très triste. Elle n'a pas une très bonne....Vue...</h3>
+        <p>+1 point pour cette blague ?</p>
+        <input type="radio" id="oui" v-model="checked" value="Merci =)">
+        <label for="oui">Oui</label>
+        <input type="radio" id="non" v-model="checked" value="Tant pis.">
+        <label for="non">Non</label>
+        <br>
+        <span> {{ checked }}</span>
+      </div>
     </div>
     <div>
       <p>indiquez la note ici :</p>
@@ -27,7 +36,8 @@ export default {
     return {
       msg: '¯\\_(ツ)_/¯',
       seen: false,
-      note: 20
+      note: 20,
+      checked: []
     }
   },
   methods: {
