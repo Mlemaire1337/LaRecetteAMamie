@@ -9,11 +9,13 @@
     </div>
     <div>
       <p>indiquez la note ici :</p>
-      <p><input v-model.number="note" type="number">/20</p>
+      <p><input v-model.number="note" type="number" id="note">/20</p>
       <h2>{{ note }} /20</h2>
     </div>
     <div>
-      <h5>{{ messageNote }}</h5>
+      <h5 v-if="note>= 20">C'est pas un peu beaucoup ?</h5>
+      <h5 v-if="note>= 0 && note< 10">Je l'ai mérité...</h5>
+      <h5 v-if="note>= 10 && note< 20">Ouh là... C'est un peu trop gentil</h5>
     </div>
   </div>
 </template>
@@ -25,8 +27,7 @@ export default {
     return {
       msg: '¯\\_(ツ)_/¯',
       seen: false,
-      note: 20,
-      messageNote: "C'est quoi ma note ? =)"
+      note: 20
     }
   },
   methods: {
@@ -38,7 +39,6 @@ export default {
       }
     }
   }
-
 }
 
 </script>
